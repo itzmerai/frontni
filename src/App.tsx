@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './components/Login';
+import StudentDashboard from './components/StudentDashboard';
+import AdminDashboard from './components/AdminDashboard';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const role = localStorage.getItem('role');
 
   return (
-    <>
+    <Router>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route 
+            path="/admin" 
+            element={role === 'admin' ? <AdminDashboard /> : <Navigate to="/login" replace />} 
+          />
+          <Route 
+            path="/student" 
+            element={role === 'student' ? <StudentDashboard /> : <Navigate to="/login" replace />} 
+          />
+          {/* Default redirect to login */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
