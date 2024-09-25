@@ -3,7 +3,7 @@ import axios from 'axios';
 import { QRCodeCanvas } from 'qrcode.react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+
 
 interface Company {
   company_id: number;
@@ -27,6 +27,7 @@ function AdminDashboard() {
   const [selectedAddress, setSelectedAddress] = useState<string>('');
   const [showMapModal, setShowMapModal] = useState<boolean>(false);
   const [mapCoords, setMapCoords] = useState<[number, number] | null>(null);
+  const someNumber = Number(someString);  // Convert string to number
 
   const generateRandomString = (length: number): string => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -273,7 +274,7 @@ function AdminDashboard() {
       )}
 
       {/* Embedded CSS for Modal */}
-      <style jsx>{`
+      <style >{`
         .modal {
           display: block;
           position: fixed;

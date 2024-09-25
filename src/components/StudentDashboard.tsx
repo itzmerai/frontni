@@ -4,7 +4,6 @@ import QrScanner from 'react-qr-scanner';
 
 function StudentDashboard() {
   const [message, setMessage] = useState('Scanning QR Code...');
-  const [isDetecting, setIsDetecting] = useState(false);
   const studentId = '123'; // Assume you have the student ID available
 
   useEffect(() => {
@@ -40,7 +39,7 @@ function StudentDashboard() {
     setMessage('Error scanning QR Code');
   };
 
-  const handleSubmit = async (scannedQr, address) => {
+  const handleSubmit = async (scannedQr: string, address: string) => {
     const scanTime = new Date().toISOString();
 
     try {
