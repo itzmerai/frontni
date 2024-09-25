@@ -11,7 +11,7 @@ function StudentDashboard() {
     setMessage('Scanning QR Code...');
   }, []);
 
-  const handleScan = (data) => {
+  const handleScan = (data: { text: string }| null) => {
     if (data) {
       const qrText = data.text || data;
 
@@ -35,7 +35,7 @@ function StudentDashboard() {
     }
   };
 
-  const handleError = (err) => {
+  const handleError = (err: Error) => {
     console.error('QR code scan error:', err);
     setMessage('Error scanning QR Code');
   };
