@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';  // No need to import React for JSX
 import axios from 'axios';
 import QrScanner from 'react-qr-scanner';
 

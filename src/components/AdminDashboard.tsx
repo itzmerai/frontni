@@ -27,7 +27,6 @@ function AdminDashboard() {
   const [selectedAddress, setSelectedAddress] = useState<string>('');
   const [showMapModal, setShowMapModal] = useState<boolean>(false);
   const [mapCoords, setMapCoords] = useState<[number, number] | null>(null);
-  const someNumberAsString = someNumber.toString();
   // Convert string to number
 
   const generateRandomString = (length: number): string => {
@@ -199,7 +198,7 @@ function AdminDashboard() {
 
       {/* Display Companies */}
       <h3>Companies</h3>
-      <table border="1">
+      <table border={1}>
         <thead>
           <tr>
             <th>Company Name</th>
@@ -226,7 +225,7 @@ function AdminDashboard() {
 
       {/* Display Timesheets */}
       <h3>Timesheets</h3>
-      <table border="1">
+      <table border={1}>
         <thead>
           <tr>
             <th>Student ID</th>
