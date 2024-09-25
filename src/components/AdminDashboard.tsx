@@ -27,7 +27,8 @@ function AdminDashboard() {
   const [selectedAddress, setSelectedAddress] = useState<string>('');
   const [showMapModal, setShowMapModal] = useState<boolean>(false);
   const [mapCoords, setMapCoords] = useState<[number, number] | null>(null);
-  const someNumber = Number(someString);  // Convert string to number
+  const someNumberAsString = someNumber.toString();
+  // Convert string to number
 
   const generateRandomString = (length: number): string => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

@@ -10,18 +10,13 @@ function StudentDashboard() {
     setMessage('Scanning QR Code...');
   }, []);
 
-  const handleScan = (data: { text: string }| null) => {
+  const handleScan = (data: { text: string } | string | null) => {
     if (data) {
-      const qrText = data.text || data;
-
-      setIsDetecting(true);
-
-      // Get the current location of the user
+      const qrText = typeof data === 'string' ? data : data.text;
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           const address = `${latitude},${longitude}`;
-          // Proceed to handle the QR code and submit the data
           handleSubmit(qrText, address);
         },
         (error) => {
@@ -29,10 +24,10 @@ function StudentDashboard() {
           setMessage('Unable to get location');
         }
       );
-    } else {
-      setIsDetecting(false);
     }
   };
+  
+  
 
   const handleError = (err: Error) => {
     console.error('QR code scan error:', err);
