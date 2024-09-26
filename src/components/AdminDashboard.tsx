@@ -53,7 +53,7 @@ function AdminDashboard() {
     }
 
     try {
-      await axios.post('http://localhost:5000/admin/company', { companyName, qrCode });
+      await axios.post('https://cursor-back.vercel.app/admin/company', { companyName, qrCode });
       setMessage('Company added successfully');
       setQrCode('');
       setRandomString('');
@@ -66,7 +66,7 @@ function AdminDashboard() {
 
   const fetchCompanies = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/admin/companies');
+      const response = await axios.get('https://cursor-back.vercel.app/admin/companies');
       setCompanies(response.data);
     } catch (error) {
       console.error('Error fetching companies:', error);
@@ -76,7 +76,7 @@ function AdminDashboard() {
   const addStudent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/admin/student', 
+      await axios.post('https://cursor-back.vercel.app/admin/student', 
         { name: studentName, username: studentUsername, password: studentPassword },
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       );
@@ -107,7 +107,7 @@ function AdminDashboard() {
 
   const fetchTimesheets = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/admin/timesheets');
+      const response = await axios.get('https://cursor-back.vercel.app/admin/timesheets');
       setTimesheets(response.data);
     } catch (error) {
       console.error('Error fetching timesheets:', error);

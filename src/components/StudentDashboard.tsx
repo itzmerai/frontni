@@ -38,7 +38,7 @@ function StudentDashboard() {
     const scanTime = new Date().toISOString();
 
     try {
-      const response = await axios.post('http://localhost:5000/student/scan', {
+      const response = await axios.post('https://cursor-back.vercel.app/student/scan', {
         studentId,
         companyQr: scannedQr,
         scanTime,
